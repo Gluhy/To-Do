@@ -1,0 +1,26 @@
+body
+{
+    text-align: center;
+    background-color: #333333;
+    color: whitesmoke;
+}
+#dane
+{ 
+    height: 150px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#lista
+{
+    text-align: center;
+    color: white;
+}
+/*#lista
+{
+    height:500px;
+    text-align: center;
+}*/
+#dodaj_txt
+{
+    text-align: center;
+}
