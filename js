@@ -1,8 +1,7 @@
 const dodaj_btn = document.querySelector("dodaj_btn")
 const usun_btn = document.querySelector("usun_btn")
 let zadania = []
-let i=0
-let lista = document.getElementById("lista")
+const lista = document.getElementById("lista")
 
 document.getElementById("dodaj_btn").addEventListener("click",dodaj)
 document.getElementById("dodaj_btn").addEventListener("click", wyswietl)
@@ -13,12 +12,11 @@ document.getElementById("usun_btn").addEventListener("click",wyswietl)
 document.getElementById("usun_btn").addEventListener("click",puste_poleU) 
 
 
-
 function wyswietl()
 {
-    lista.innerHTML = zadania.forEach, i => {
-        print("[" + index + "] jest " + element);
-    });
+    lista.innerHTML = zadania.map((element, index) => {
+        return `${index+1}. ${element}`
+    }).join(',<br>')
 }
 
 function dodaj()
@@ -36,7 +34,7 @@ function puste_poleD()
 function usun()
 {
     const usun_txt = document.getElementById("usun_txt").value
-    zadania.splice(usun_txt.value + 1)
+    zadania.splice(usun_txt - 1, 1)
 }
 
 function puste_poleU()
