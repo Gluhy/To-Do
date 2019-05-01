@@ -13,10 +13,11 @@ document.getElementById("usun_btn").addEventListener("click",puste_poleU)
 
 
 function wyswietl()
+
 {
-    lista.innerHTML = zadania.map((element, index) => {
-        return `${index+1}. ${element}`
-    }).join(',<br>')
+    lista.innerHTML = zadania
+    .map((element, index) => `${index + 1}. ${element}`)
+    .join("<br>");
 }
 
 function dodaj()
@@ -35,6 +36,16 @@ function usun()
 {
     const usun_txt = document.getElementById("usun_txt").value
     zadania.splice(usun_txt - 1, 1)
+    {
+    if (usun_txt = Number)
+    {
+        zadania.splice(usun_txt - 1, 1)
+    }
+    else
+    {
+        continue
+    }
+}
 }
 
 function puste_poleU()
