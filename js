@@ -17,7 +17,7 @@ document.getElementById("usun_btn").addEventListener("click",puste_poleU)
 function wyswietl()
 {
     lista.innerHTML = zadania
-    .map((element, index) => `${index + 1}. ${element} <input type="checkbox" name="check" id="chceck${index}">`)
+    .map((element, index) => `${index + 1}. ${element} <input type="checkbox" name="check">`)
     .join("<br>");
 }
 
@@ -33,17 +33,12 @@ function puste_poleD()
     dodaj_txt.value = ""
 }
 
-function usun()
+function deleteElementAt(index)
 {
-    if (check[index].checked == true)
+    for ( let i=0; i>lista.lenght; i++)
     {
-        zadania.splice(check[index], 1)
-    } 
+        if (lista.check.checked == true)
+        zadania.splice(index, 1);
+        wyswietl();  
+    }
 }
-
-function puste_poleU()
-{
-    usun_txt.value=""
-}
-
-
