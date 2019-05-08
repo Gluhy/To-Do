@@ -7,11 +7,10 @@ const deleteBtt = document.getElementById("deleteBtt")
 
 
 document.getElementById("dodaj_btn").addEventListener("click",dodaj)
-document.getElementById("dodaj_btn").addEventListener("click", wyswietl)
 document.getElementById("dodaj_btn").addEventListener("click", puste_poleD)
 //=====================================================================
 document.getElementById("usun_btn").addEventListener("click",toDelete)
-document.getElementById("usun_btn").addEventListener("click",wyswietl)
+
 
 
 
@@ -26,6 +25,7 @@ function dodaj()
 {
     const dodaj_txt = document.getElementById("dodaj_txt").value
     zadania.push(dodaj_txt)
+    wyswietl()
 }
 
 function puste_poleD()
@@ -33,9 +33,9 @@ function puste_poleD()
     dodaj_txt.value = ""
 }
 
-function deleteElementAt(i)
+function deleteElementAt(boxNumber)
 {
-    zadania.splice(i, 1);
+    zadania.splice(boxNumber, 1);
     wyswietl();
 }
 
@@ -48,7 +48,12 @@ function toDelete()
     if (zadania.box[i].checked)
         {
             boxNumber = i
-            deleteElementAt()
+            deleteElementAt(boxNumber)
+            break
+        }
+        else
+        {
+            continue
         }
         console.log([i])
     }
