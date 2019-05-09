@@ -1,60 +1,39 @@
-const dodaj_btn = document.querySelector("dodaj_btn")
-const usun_btn = document.querySelector("usun_btn")
-let zadania = []
-const lista = document.getElementById("lista")
-const box = document.getElementById("box")
-const deleteBtt = document.getElementById("deleteBtt")
+const add_btn = document.querySelector("add_btn")
+const del_btn = document.querySelector("del_btn")
+let works = []
+const list = document.getElementById("list")
+const deleteBtn = document.getElementById("deleteBtn")
 
 
-document.getElementById("dodaj_btn").addEventListener("click",dodaj)
-document.getElementById("dodaj_btn").addEventListener("click", puste_poleD)
+document.getElementById("add_btn").addEventListener("click", add)
+document.getElementById("add_btn").addEventListener("click", clearAdd)
 //=====================================================================
-document.getElementById("usun_btn").addEventListener("click",toDelete)
+document.getElementById("del_btn").addEventListener("click", toDelete)
 
 
 
 
-function wyswietl()
+function show()
 {
-    lista.innerHTML = zadania
-    .map((element, index) => `${index + 1}. ${element} <input type="checkbox" name="box">`)
-    .join("<br>");
+    list.innerHTML = works
+    .map((element, index) => `${index + 1}. ${element} <input type="checkbox" id="checkbox${index}">`)
+        .join("<br>");
 }
 
-function dodaj()
+function add()
 {
-    const dodaj_txt = document.getElementById("dodaj_txt").value
-    zadania.push(dodaj_txt)
-    wyswietl()
+    const add_txt = document.getElementById("add_txt").value
+    works.push(add_txt)
+    show()
 }
 
-function puste_poleD()
+function clearAdd()
 {
-    dodaj_txt.value = ""
-}
-
-function deleteElementAt(boxNumber)
-{
-    zadania.splice(boxNumber, 1);
-    wyswietl();
+    add_txt.value = ""
 }
 
 function toDelete()
 {
-    let boxNumber
-    for (let i=0; i< zadania.length; i++)
-    {
-
-    if (zadania.box[i].checked)
-        {
-            boxNumber = i
-            deleteElementAt(boxNumber)
-            break
-        }
-        else
-        {
-            continue
-        }
-        console.log([i])
-    }
+    works.forEach((_, i) => document.getElementById(`checkbox${i}`).checked && works.splice(i, 1))
+    show();
 }
