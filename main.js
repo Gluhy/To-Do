@@ -37,3 +37,12 @@ function toDelete()
     works.forEach((_, i) => document.getElementById(`checkbox${i}`).checked && works.splice(i, 1))
     show();
 }
+
+function btnAdd()
+{
+    if (event.key == "Enter")
+        {
+            add()
+            clearAdd()
+        }
+}
