@@ -1,21 +1,19 @@
 const add_btn = document.querySelector("add_btn")
 const del_btn = document.querySelector("del_btn")
-let works = []
+let toDo = []
 const list = document.getElementById("list")
-const deleteBtn = document.getElementById("deleteBtn")
-
+const deleteBtnDiv = document.getElementById("deleteBtnDiv")
+let did_ = []
 
 document.getElementById("add_btn").addEventListener("click", add)
 document.getElementById("add_btn").addEventListener("click", clearAdd)
 //=====================================================================
-document.getElementById("del_btn").addEventListener("click", toDelete)
-
-
+document.getElementById("del_btn").addEventListener("click", didF)
 
 
 function show()
 {
-    list.innerHTML = works
+    list.innerHTML = toDo
     .map((element, index) => `${index + 1}. ${element} <input type="checkbox" id="checkbox${index}">`)
         .join("<br>");
 }
@@ -23,7 +21,7 @@ function show()
 function add()
 {
     const add_txt = document.getElementById("add_txt").value
-    works.push(add_txt)
+    toDo.push(add_txt)
     show()
 }
 
@@ -34,15 +32,29 @@ function clearAdd()
 
 function toDelete()
 {
-    works.forEach((_, i) => document.getElementById(`checkbox${i}`).checked && works.splice(i, 1))
+    toDo.forEach((_, i) => document.getElementById(`checkbox${i}`).checked && toDo.splice(i, 1))
     show();
+    didShow();
 }
 
 function btnAdd()
 {
-    if (event.key == "Enter")
+    if (event.key === "Enter")
         {
             add()
             clearAdd()
         }
+} 
+
+function didF()
+{
+    toDo.forEach((_, i) => document.getElementById(`checkbox${i}`).checked && did_.push([i])
+    toDelete()
 }
+
+function didShow()
+{
+    const done = document.getElementById("done")
+    done.innerHTML = did_
+}
+
