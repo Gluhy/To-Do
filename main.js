@@ -4,6 +4,7 @@ let toDo = []
 const list = document.getElementById("list")
 const didBtnDiv = document.getElementById("didBtnDiv")
 let did_ = []
+let delStats = 0
 
 document.getElementById("add_btn").addEventListener("click", add)
 document.getElementById("add_btn").addEventListener("click", clearAdd)
@@ -16,8 +17,8 @@ document.getElementById("del_btn").addEventListener("click",toDelete)
 function show()
 {
     list.innerHTML = toDo
-    .map((element, index) => `${index + 1}. ${element} <input type="checkbox" id="checkboxToDo${index}">`)
-        .join("<br>")
+    .map((element, index) => `${index + 1}. ${element} <input type="checkbox" id="checkboxToDo${index}">`).join("<br>")
+    stats()
 }
 
 function add()
@@ -61,10 +62,19 @@ function didShow()
     done.innerHTML = did_
     .map((element, index) => `${index + 1}. <strike>${element}</strike> <input type = "checkbox" id = "checkboxDid${index}">`)
     .join("</br>")
+    stats()
 }
 
 function toDelete()
 {
-    did_.forEach((_, index) => document.getElementById(`checkboxDid${index}`).checked && did_.splice(index, 1))
+    did_.forEach((_, index) => document.getElementById(`checkboxDid${index}`).checked && did_.splice(index, 1) && delStats++)
     didShow()
+}
+
+function stats()
+{
+    const statsDiv = document.getElementById("statsDiv")
+    let toDoStats = toDo.length
+    let didStats = did_.length
+    statsDiv.innerHTML = `Do zrobienia: ${toDoStats} </br> Zrobione: ${didStats} </br> Usunięte: ${delStats}`
 }
