@@ -5,7 +5,7 @@
         <title>Do zrobienia</title>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body onload="stats()">
         <div id="container">
             <div id="data">
                 <input type="text" id="add_txt" placeholder="Do Zrobienia" onkeydown="btnAdd(this)">
@@ -30,6 +30,9 @@
             </br>
         </br>
                 <input type="button" id="del_btn" value="Usuń!">
+            </div>
+            <div id="statsDiv">
+
             </div>
         </div>
         
