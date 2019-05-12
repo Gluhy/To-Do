@@ -15,7 +15,7 @@ function show()
 {
     list.innerHTML = toDo
     .map((element, index) => `${index + 1}. ${element} <input type="checkbox" id="checkbox${index}">`)
-        .join("<br>");
+        .join("<br>")
 }
 
 function add()
@@ -33,8 +33,8 @@ function clearAdd()
 function toDelete()
 {
     toDo.forEach((_, i) => document.getElementById(`checkbox${i}`).checked && toDo.splice(i, 1))
-    show();
-    didShow();
+    show()
+    didShow()
 }
 
 function btnAdd()
@@ -48,7 +48,8 @@ function btnAdd()
 
 function didF()
 {
-    toDo.forEach((_, i) => document.getElementById(`checkbox${i}`).checked && did_.push([i])
+    toDo.forEach((a, i) => document.getElementById(`checkbox${i}`).checked && did_.push(a))
+    console.log(did_)
     toDelete()
 }
 
@@ -56,5 +57,7 @@ function didShow()
 {
     const done = document.getElementById("done")
     done.innerHTML = did_
+    .map((element, index) => `${index + 1}. <strike>${element}</strike>`)
+    .join("</br>")
 }
 
